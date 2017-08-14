@@ -24,6 +24,13 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->app->bind(
+            \App\Contracts\TimerRepositoryInterface::class,
+            \App\Repositories\TimerRepository::class
+        );
+        $this->app->bind(
+            \App\Contracts\GroupRepositoryInterface::class,
+            \App\Repositories\GroupRepository::class
+        );
     }
 }

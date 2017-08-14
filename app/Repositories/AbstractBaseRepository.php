@@ -6,7 +6,7 @@ use App\Contracts\BaseRepositoryInterface;
 
 abstract class AbstractBaseRepository implements BaseRepositoryInterface
 {
-    public $defaults = [
+    protected $defaults = [
         'paginate_amount' => 10,
         'paginate' => false,
         'attribute_filters' => [],
