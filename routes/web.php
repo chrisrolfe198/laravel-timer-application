@@ -13,6 +13,9 @@
 
 Route::middleware(['auth'])->group(function() {
     Route::get('/', 'TimerController@index');
+
+    Route::resource('/timers', 'TimerController', ['except' => ['index']]);
+    Route::resource('/groups', 'GroupController');
 });
 
 Auth::routes();
