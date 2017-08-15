@@ -22,8 +22,12 @@
                                 <div class="card">
                                     <div class="card-body">
                                         <h4 class="card-title">{{ $timer->name }}</h4>
-                                        <p class="card-text">This timer currently has been running for 10 minutes</p>
-                                        <a href="/timers/{{ $timer->id }}" class="btn btn-primary">View</a>
+                                        @if ($timer->running == null)
+                                            <p class="card-text">This timer currently has been running for {{ Carbon\Carbon::now()->diffInMinutes($timer->created_at) }} minutes</p>
+                                            <a href="/timers/{{ $timer->id }}/stop" class="btn btn-danger">Stop</a>
+                                        @else
+                                            <p class="card-text">This timer ran for {{ $timer->created_at->diffInMinutes($timer->running) }} minutes</p>
+                                        @endif
                                     </div>
                                 </div>
                             </div>

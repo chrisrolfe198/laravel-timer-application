@@ -15,6 +15,8 @@ class Timer extends Model
         'name', 'user_id', 'group_id'
     ];
 
+    protected $dates = ['created_at', 'updated_at', 'running'];
+
     public function user()
     {
         return $this->belongsTo(User::class);

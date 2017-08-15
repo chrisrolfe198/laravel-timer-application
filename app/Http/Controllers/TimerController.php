@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Contracts\{TimerRepositoryInterface, GroupRepositoryInterface};
+use Carbon\Carbon;
 
 class TimerController extends Controller
 {
@@ -19,10 +20,11 @@ class TimerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $timers = $this->timer_repository->get_all([
-            'paginate' => true
+            'paginate' => true,
+            'user_id' => $request->user()->id
         ]);
 
         return view('timers.index', ['timers' => $timers]);
@@ -91,6 +93,13 @@ class TimerController extends Controller
     public function update(Request $request, $id)
     {
         //
+    }
+
+    public function stop_timer(Request $request, $id)
+    {
+        $this->timer_repository->update($id, ['running' => Carbon::now()]);
+
+        return redirect('/');
     }
 
     /**

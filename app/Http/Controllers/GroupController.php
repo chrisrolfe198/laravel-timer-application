@@ -19,9 +19,12 @@ class GroupController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $groups = $this->group_repository->get_all(['paginate' => true]);
+        $groups = $this->group_repository->get_all([
+            'paginate' => true,
+            'user_id' => $request->user()->id
+        ]);
 
         return view('groups.index', ['groups' => $groups]);
     }
