@@ -16,19 +16,23 @@
                     </ul>
                 </div>
                 <div class="card-body">
-                    @foreach ($timers as $timer)
-                        <div class="col-sm-12 col-md-4">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h4 class="card-title">{{ $timer->name }}</h4>
-                                    <p class="card-text">This timer currently has been running for 10 minutes</p>
-                                    <a href="/timers/{{ $timer->id }}" class="btn btn-primary">View</a>
+                    <div class="row mb-4">
+                        @foreach ($timers as $timer)
+                            <div class="col-sm-12 col-md-4 mb-4">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h4 class="card-title">{{ $timer->name }}</h4>
+                                        <p class="card-text">This timer currently has been running for 10 minutes</p>
+                                        <a href="/timers/{{ $timer->id }}" class="btn btn-primary">View</a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    @endforeach
+                        @endforeach
+                    </div>
 
-                    <a href="/timers/create" class="btn btn-primary">Create Timers</a>
+                    <p class="text-center"><a href="/timers/create" class="btn btn-primary">Create a Timer</a></p>
+
+                    {{ $timers->links() }}
                 </div>
             </div>
         </div>

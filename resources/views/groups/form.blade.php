@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">Dashboard</div>
+                <div class="card-header">Group</div>
 
                 <div class="card-body">
                     <form method="POST" action="/groups/{{ (isset($group) ? $group->id : "") }}">
